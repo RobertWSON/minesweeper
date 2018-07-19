@@ -16,7 +16,8 @@ for (var r = 0; r < size; r++)  {
       row: r,
       col: c,
       hidden: true,
-      isMine: true
+      isMine: math.floor(math.random() * 4.3),
+      isMarked: false 
     })
   }
 }
@@ -32,7 +33,9 @@ function startGame () {
 
   document.addEventListener("click", checkForWin)
   document.addEventListener("contextmenu", checkForWin)
-
+  document.getElementById("reset").addEventListener("click", reset)
+  document.getElementById("beginner").addEventListener("beginner", reset)
+  document.getElementById("intermediate").addEventListener("intermediate", reset)
 }
 
 // Define this function to look for a win condition:
@@ -75,4 +78,28 @@ function countSurroundingMines (cell) {
     return mineCount;
     }
   }
+}
+
+
+
+function reset() {
+  board = {cells: []}
+  document.getElementsByClassName('board')[0].innerHTML = '';
+  startGame();
+}
+
+
+function beginner() {
+  size = 3;
+  board = {cells: []}
+  document.getElementsByClassName('board')[0].innerHTML = '';
+  startGame();
+}
+
+
+function intermediate() {
+  size = 6;
+  board = {cells: []}
+  document.getElementsByClassName('board')[0].innerHTML = '';
+  startGame();
 }
