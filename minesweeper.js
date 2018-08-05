@@ -4,11 +4,8 @@ document.addEventListener('DOMContentLoaded', startGame)
 var board = {cells:[]} 
 
 
-// Global variables
+// Global variable
 var size = 3;
-var i;
-var r;
-var c;
 
 //board
 function createBoard()  {
@@ -20,7 +17,7 @@ function createBoard()  {
         row: r,
         col: c,
         hidden: true,
-        isMine: Math.floor(Math.random()*4.3),
+        isMine: Math.floor(Math.random()*2),
         isMarked: false 
       })
     }
@@ -55,7 +52,7 @@ function checkForWin () {
     if (board.cells[i].isMine == true && board.cells[i].isMarked == false) {
       return;
     } 
-    else if (board.cells[i].hidden == true && board.cells[i].isMarked == true) {
+    else if (board.cells[i].hidden == true && board.cells[i].isMine == false) {
       return;
     } 
   }
